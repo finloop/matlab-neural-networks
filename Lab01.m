@@ -30,10 +30,14 @@ for tfun = training_functions
     for afun = activation_functions
         ACC=zeros(iterations, nclasses); % Acc per step     
         STD=zeros(iterations, nclasses); % Std per step
+
+        RECALL=zeros(iterations, nclasses); % Acc per step     
+        RECALL_STD=zeros(iterations, nclasses); % Std per step
         disp(['Starting job. Iterations to do: ', num2str(length(ACC))])
         for neurons=1:iterations
             indeksy = crossvalind('Kfold', Y, K);
             Acc_CV = zeros(K, nclasses);
+            Recall_CV = zeros(K, nclasses);
             disp(['Starting iteration : ', num2str(neurons),'/' , num2str(length(ACC))])
             for k = 1:K
                 % Indeksy do walidacji
@@ -65,14 +69,19 @@ for tfun = training_functions
                     [max_el, ind] = max(Y_Out(:,j));
                     Y_Out_Final(ind,j) = 1;
                 end
-                Acc_CV(k, :) = sum(Y_Out_Final .* Y_Test, 2) ./ sum(Y_Test, 2);
+                % TP / P
+                % Czułość / Recall
+                Recall_CV(k, :) = sum(Y_Out_Final .* Y_Test, 2) ./ sum(Y_Test, 2);
+
+                % Dokładność / Accuracy
+                Acc_CV(k, :) = sum(Y_Out_Final .* Y_Test, 2) ./ sum(Y_Out_Final, 2); 
             end
             ACC(neurons, :) = mean(Acc_CV, 2);
             STD(neurons, :) = std(Acc_CV, 0, 2);
+
+            RECALL(neurons, :) = mean(Recall_CV, 2);
+            RECALL_STD(neurons, :) = std(Recall_CV, 0, 2);
         end
         save(tfun +"_"+ afun + ".mat");
     end
-   
-
-
 end

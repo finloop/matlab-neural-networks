@@ -24,7 +24,7 @@ end
 
 plot(I*10, M, '.', 'MarkerSize', 20)
 cont{length(cont)+1}= "Punkt z największą precyzją";
-title(["Wykres precyzji od ilości neuronów dla rożnych", ...
+title(["Wykres dokładności od ilości neuronów dla rożnych", ...
     "algorytmów uczących i funkcji aktywacji"])
 xlabel("Ilość neuronów w warstwie ukrytej")
 ylabel("Prezyzja")
@@ -32,7 +32,7 @@ legend(cont, 'Location', 'southwest')
 saveas(gcf, 'img/precision-all.png')
 close(gcf)
 
-%%%%%%%%%%%%% Wykresy precyzji per klasa dla algorytmów %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% Wykresy dokładności per klasa dla algorytmów %%%%%%%%%%%%%%%%%%%
 clear
 clc
 training_functions = ["trainscg" "trainrp" "traincgb"];
