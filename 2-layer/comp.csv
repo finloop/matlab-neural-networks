@@ -1,0 +1,21 @@
+Network,acc,std(acc),recall,std(recall)
+trainscg-tansig-[60 80],0.967,0.0616,0.962,0.0718
+trainscg-tansig-[120 40],0.964,0.0615,0.959,0.0801
+traincgb-tansig-[120 60],0.963,0.064,0.958,0.0749
+traincgb-logsig-[60 80],0.964,0.0686,0.956,0.0735
+traincgb-logsig-[120 80],0.961,0.0671,0.954,0.0742
+trainscg-tansig-[60 40],0.959,0.0683,0.954,0.0762
+trainscg-tansig-[60 60],0.959,0.0733,0.953,0.0793
+trainscg-logsig-[60 20],0.958,0.0716,0.953,0.0792
+trainscg-logsig-[60 80],0.957,0.067,0.953,0.0796
+trainscg-logsig-[120 20],0.959,0.0789,0.951,0.084
+traincgb-logsig-[60 20],0.959,0.0737,0.951,0.0808
+trainscg-logsig-[60 60],0.958,0.0774,0.951,0.0879
+traincgb-logsig-[60 60],0.958,0.0705,0.951,0.0839
+trainscg-logsig-[120 40],0.957,0.0734,0.95,0.0776
+trainscg-logsig-[40 80],0.956,0.0736,0.95,0.0962
+trainscg-logsig-[120 60],0.956,0.0692,0.95,0.073
+trainscg-tansig-[120 60],0.955,0.0801,0.95,0.0893
+trainscg-tansig-[60 20],0.958,0.0666,0.949,0.0885
+trainscg-logsig-[120 80],0.953,0.0706,0.949,0.0845
+trainscg-tansig-[120 20],0.953,0.0674,0.949,0.0731
