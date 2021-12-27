@@ -10,7 +10,7 @@ cont = {};
 for tfun = training_functions
     for afun = activation_functions
         load(tfun +"_"+ afun);
-        [M, I] = max(mean(ACC, 2));
+        [M, I] = max(mean(ACC, 2))
 
         plot(10:10:160,mean(ACC, 2), 'LineWidth', 2);
         ylim([0.5 1]);
@@ -70,40 +70,6 @@ for tfun = training_functions
     end
 end
 
-%%%%%%%%%%%%%%%%%%% Wykres wszystkie algorytmy - czułość %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-clear
-clc
-training_functions = ["trainscg" "trainrp" "traincgb"];
-activation_functions = ["tansig" "logsig"];
-
-hold off
-i = 1;
-cont = {};
-for tfun = training_functions
-    for afun = activation_functions
-        load(tfun +"_"+ afun);
-        [M, I] = max(mean(RECALL, 2));
-
-        plot(10:10:160,mean(RECALL, 2), 'LineWidth', 2);
-        ylim([0.5 1]);
-        cont{i} = tfun +"--" + afun;
-
-        hold on
-        i = i +1;
-        clear("RECALL")
-    end
-end
-
-plot(I*10, M, '.', 'MarkerSize', 20)
-cont{length(cont)+1}= "Punkt z największą czułością";
-title(["Wykres czułości od ilości neuronów dla rożnych", ...
-    "algorytmów uczących i funkcji aktywacji"])
-xlabel("Ilość neuronów w warstwie ukrytej")
-ylabel("Czułość")
-legend(cont, 'Location', 'southwest')
-saveas(gcf, 'img/recall-all.png')
-close(gcf)
-
 %%%%%%%%%%%%% Wykresy czułości per klasa dla algorytmów %%%%%%%%%%%%%%%%%%%
 clear
 clc
@@ -121,9 +87,9 @@ end
 for tfun = training_functions
     for afun = activation_functions
         load(tfun +"_"+ afun);
-        plot(RECALL, 'LineWidth', 2);
+        plot(ACC, 'LineWidth', 2);
         xticklabels(lab);
-        title(["Czułość dla każdej z klas dla kombinacji", ...
+        title(["Dokładność dla każdej z klas dla kombinacji", ...
             (tfun +"--"+ afun)])
         ylim([0.5 1]);
         for j=[1:12]
@@ -134,10 +100,10 @@ for tfun = training_functions
         title(leg, "Klasy");
         leg.Title.Visible = 'on';
         xlabel("Ilość neuronów w warstwie ukrytej")
-        ylabel("Czułość")
+        ylabel("Dokładność")
         i = i +1;
         clear("ACC")
-        saveas(gcf, "img/recall-per-class-" + tfun +"-"+ afun + ".png")
+        saveas(gcf, "img/accuracy-per-class-" + tfun +"-"+ afun + ".png")
         close(gcf) 
     end
 end
