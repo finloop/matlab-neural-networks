@@ -31,6 +31,10 @@ for kernel=kernels
     end
 end
 
+RESULTS.Properties.VariableNames = ["SVM" "acc" "std(acc)" "precision" "recall" "F1 score"];
+writetable(sortrows(RESULTS, [5 2 4 6], 'descend'), "res.csv")
+
+
 function clf_score = mytrainsvm(X, Y, kernel, kernel_scale, solver, C, d) 
     L = length(Y);
     classes = unique(Y);
