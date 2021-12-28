@@ -12,7 +12,7 @@ CLASS_PREC = zeros(nclasses, 1);
 CLASS_RECALL = zeros(nclasses, 1);
 CLASS_F1 = zeros(nclasses, 1);
 
-standardize = false;
+standardize = true;
 
 % Dla każdej z klas
 for nclass=1:nclasses
@@ -78,9 +78,10 @@ for nclass=1:nclasses
 end
 
 res = table((1:10)',round(CLASS_ACC, 4), round(CLASS_STD, 4), round(CLASS_PREC, 4), round(CLASS_RECALL, 4),round(CLASS_F1, 4));
-fin = table(0,round(mean(CLASS_ACC),4),round(mean(CLASS_STD),4),round(mean(CLASS_PREC),4),round(mean(CLASS_RECALL),4),round(mean(CLASS_F1),4));
-res = [res; fin];
 res.Properties.VariableNames = ["Klasa" "acc" "std(acc)" "prec" "recall" "F1"];
+
+fin = table(0,round(mean(CLASS_ACC),4),round(mean(CLASS_STD),4),round(mean(CLASS_PREC),4),round(mean(CLASS_RECALL),4),round(mean(CLASS_F1),4));
+
 writetable(res, "svm-" + string(standardize) + ".csv")
 
 
