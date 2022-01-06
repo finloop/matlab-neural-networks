@@ -1,0 +1,10 @@
+load("svm.mat")
+
+%RESULTS(contains(RESULTS.SVM, 'gaussian'),:)
+a = array2table(split(RESULTS.SVM, '-'));
+
+a.Var2 = str2double(array2table(split(RESULTS.SVM, '-')).Var2);
+a.Var3 = str2double(array2table(split(RESULTS.SVM, '-')).Var3);
+a.Properties.VariableNames = {'Kernel' 'sigma' 'C'}
+
+[RESULTS()]
